@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/payee-calculator-pages/static/css/main.00fd21e1.css",
-    "main.js": "/payee-calculator-pages/static/js/main.ae5c13d1.js",
-    "index.html": "/payee-calculator-pages/index.html",
-    "main.00fd21e1.css.map": "/payee-calculator-pages/static/css/main.00fd21e1.css.map",
-    "main.ae5c13d1.js.map": "/payee-calculator-pages/static/js/main.ae5c13d1.js.map"
+    "main.css": "/payee-calculator/static/css/main.00fd21e1.css",
+    "main.js": "/payee-calculator/static/js/main.ae5c13d1.js",
+    "index.html": "/payee-calculator/index.html",
+    "main.00fd21e1.css.map": "/payee-calculator/static/css/main.00fd21e1.css.map",
+    "main.ae5c13d1.js.map": "/payee-calculator/static/js/main.ae5c13d1.js.map"
   },
   "entrypoints": [
     "static/css/main.00fd21e1.css",
