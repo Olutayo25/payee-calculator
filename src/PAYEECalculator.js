@@ -18,7 +18,7 @@ const PAYEECalculator = () => {
       minimumFractionDigits: 2,
     });
   };
-  
+
   const calculatePAYEE = () => {
     const annualSalary = salary * 12;
 
@@ -66,13 +66,13 @@ const PAYEECalculator = () => {
 
     const annualPAYEE = tax;
     const monthlyPAYEE = tax / 12;
-    setAnnualPayee(annualPAYEE.toFixed(2));
-    setPayee(monthlyPAYEE.toFixed(2));
-    setMonthlyPension((pensionDeduction / 12).toFixed(2));
+    setAnnualPayee(formatCurrency(annualPAYEE));
+    setPayee(formatCurrency(monthlyPAYEE));
+    setMonthlyPension(formatCurrency(pensionDeduction / 12));
 
     // Net Salary Calculation
     const netAnnualSalary = annualSalary - (annualPAYEE + totalStatutoryDeductions);
-    setNetSalary((netAnnualSalary / 12).toFixed(2));
+    setNetSalary(formatCurrency(netAnnualSalary / 12));
   };
 
   return (
@@ -115,7 +115,7 @@ const PAYEECalculator = () => {
             <thead>
               <tr>
                 <th>Description</th>
-                <th>Amount (₦)</th>
+                <th>Amount</th>
               </tr>
             </thead>
             <tbody>
