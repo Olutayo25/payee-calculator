@@ -11,6 +11,14 @@ const PAYEECalculator = () => {
   const [annualPayee, setAnnualPayee] = useState(null);
   const [monthlyPension, setMonthlyPension] = useState(null);
 
+  const formatCurrency = (amount) => {
+    return amount.toLocaleString("en-NG", {
+      style: "currency",
+      currency: "NGN",
+      minimumFractionDigits: 2,
+    });
+  };
+  
   const calculatePAYEE = () => {
     const annualSalary = salary * 12;
 
@@ -67,76 +75,77 @@ const PAYEECalculator = () => {
     setNetSalary((netAnnualSalary / 12).toFixed(2));
   };
 
-  return (
-    <div className="container">
-      <h2>PAYEE Calculator</h2>
+return (
+  <div className="app-container">
+    <div className="p-5 max-w-md mx-auto border rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold mb-3">PAYEE Calculator</h2>
       <input
         type="number"
         placeholder="Enter Monthly Salary"
         value={salary}
-        onChange={(e) => setSalary(e.target.value)}
-        className="input-field"
+        onChange={(e) => setSalary(parseFloat(e.target.value) || "")}
+        className="border p-2 w-full mb-3"
       />
-
-      <div className="deductions">
-        <label className="toggle-switch">
-          <span>Pension (8%)</span>
-          <input type="checkbox" checked={pension} onChange={() => setPension(!pension)} />
-          <span className="slider"></span>
-        </label>
-
-        <label className="toggle-switch">
-          <span>NHF (2.5%)</span>
-          <input type="checkbox" checked={nhf} onChange={() => setNHF(!nhf)} />
-          <span className="slider"></span>
-        </label>
-
-        <label className="toggle-switch">
-          <span>NHIS (5%)</span>
-          <input type="checkbox" checked={nhis} onChange={() => setNHIS(!nhis)} />
-          <span className="slider"></span>
-        </label>
+      
+      {/* Statutory Deductions */}
+      <div className="flex justify-between items-center mb-3">
+        <label>Pension (8%)</label>
+        <input type="checkbox" checked={pension} onChange={() => setPension(!pension)} />
+      </div>
+      <div className="flex justify-between items-center mb-3">
+        <label>NHF (2.5%)</label>
+        <input type="checkbox" checked={nhf} onChange={() => setNHF(!nhf)} />
+      </div>
+      <div className="flex justify-between items-center mb-3">
+        <label>NHIS (5%)</label>
+        <input type="checkbox" checked={nhis} onChange={() => setNHIS(!nhis)} />
       </div>
 
-      <button onClick={calculatePAYEE} className="calculate-btn">Calculate PAYEE</button>
+      {/* Calculate Button */}
+      <button onClick={calculatePAYEE} className="bg-blue-500 text-white p-2 w-full">
+        Calculate PAYEE
+      </button>
 
+      {/* Results */}
       {payee !== null && (
-        <div className="results">
-          <h3>Results</h3>
-          <table>
+        <div className="mt-4">
+          <table className="w-full border-collapse border border-gray-300 mt-4">
             <thead>
-              <tr>
-                <th>Description</th>
-                <th>Amount (₦)</th>
+              <tr className="bg-gray-100">
+                <th className="border p-2">Description</th>
+                <th className="border p-2">Amount (₦)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>PAYEE per annum</td>
-                <td>{annualPayee}</td>
+                <td className="border p-2">PAYEE per annum</td>
+                <td className="border p-2">{Number(annualPayee).toLocaleString("en-NG", { style: "currency", currency: "NGN" })}</td>
               </tr>
               <tr>
-                <td>Monthly Tax Pay</td>
-                <td>{payee}</td>
+                <td className="border p-2">Monthly Tax Pay</td>
+                <td className="border p-2">{Number(payee).toLocaleString("en-NG", { style: "currency", currency: "NGN" })}</td>
               </tr>
               <tr>
-                <td>Monthly Pension</td>
-                <td>{monthlyPension}</td>
+                <td className="border p-2">Monthly Pension</td>
+                <td className="border p-2">{Number(monthlyPension).toLocaleString("en-NG", { style: "currency", currency: "NGN" })}</td>
               </tr>
               <tr>
-                <td>Net Monthly Salary</td>
-                <td>{netSalary}</td>
+                <td className="border p-2">Net Monthly Salary</td>
+                <td className="border p-2">{Number(netSalary).toLocaleString("en-NG", { style: "currency", currency: "NGN" })}</td>
               </tr>
             </tbody>
           </table>
         </div>
       )}
-
-      <footer className="footer">
-        Developed by: <a href="https://www.linkedin.com/in/tayoasaolu" target="_blank" rel="noopener noreferrer">Tayo</a>
-      </footer>
     </div>
-  );
+
+    {/* Footer */}
+    <footer className="footer">
+      Developed by: <a href="https://www.linkedin.com/in/olutayo25" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">Tayo</a>
+    </footer>
+  </div>
+);
+
 };
 
 export default PAYEECalculator;
