@@ -1,1 +1,38 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" href="/payee-calculator/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><title>PAYEE Calculator</title><meta name="description" content="A simple and accurate PAYEE calculator for Nigerian employees to compute tax deductions and take-home pay."><meta name="keywords" content="PAYEE calculator, Nigeria tax calculator, salary tax, income tax, tax deductions, PAYE, NHF, NHIS, Pension deductions"><meta name="author" content="Tayo ASAOLU"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="/payee-calculator/logo192.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><meta name="theme-color" content="#ffffff"><link rel="apple-touch-icon" href="/payee-calculator/logo192.png"/><link rel="manifest" href="/payee-calculator/manifest.json"/><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3E8Y998MN"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-Q3E8Y998MN")</script><script type="text/javascript">!function(t,e,n,a,c,r,s){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(r=e.createElement(a)).async=1,r.src="https://www.clarity.ms/tag/qqlm69gr8a",(s=e.getElementsByTagName(a)[0]).parentNode.insertBefore(r,s)}(window,document,"clarity","script")</script><style>.feedback-container{display:none;position:fixed;bottom:20px;right:20px;background:#fff;padding:15px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.1);text-align:center}.feedback-container p{margin:0;font-size:14px}.feedback-container button{margin:5px;padding:5px 10px;border:none;cursor:pointer;font-size:16px}.thumbs-up{background:green;color:#fff}.thumbs-down{background:red;color:#fff}</style><script defer="defer" src="/payee-calculator/static/js/main.ae5c13d1.js"></script><link href="/payee-calculator/static/css/main.47f54158.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><div id="feedback-popup" class="feedback-container"><p>Was this calculation helpful?</p><button class="thumbs-up" onclick='submitFeedback("up")'>👍 Yes</button> <button class="thumbs-down" onclick='submitFeedback("down")'>👎 No</button></div><script>function showFeedback(){document.getElementById("feedback-popup").style.display="block"}function submitFeedback(e){console.log("User feedback:",e),document.getElementById("feedback-popup").style.display="none"}setTimeout(showFeedback,5e3)</script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" href="/payee-calculator/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><title>PAYEE Calculator</title><meta name="description" content="A simple and accurate PAYEE calculator for Nigerian employees to compute tax deductions and take-home pay."><meta name="keywords" content="PAYEE calculator, Nigeria tax calculator, salary tax, income tax, tax deductions, PAYE, NHF, NHIS, Pension deductions"><meta name="author" content="Tayo ASAOLU"><link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="/payee-calculator/logo192.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><meta name="theme-color" content="#ffffff"><link rel="apple-touch-icon" href="/payee-calculator/logo192.png"/><link rel="manifest" href="/payee-calculator/manifest.json"/><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3E8Y998MN"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-Q3E8Y998MN")</script><script type="text/javascript">!function(t,e,n,a,c,r,s){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(r=e.createElement(a)).async=1,r.src="https://www.clarity.ms/tag/qqlm69gr8a",(s=e.getElementsByTagName(a)[0]).parentNode.insertBefore(r,s)}(window,document,"clarity","script")</script><style>.feedback-container{display:none;position:fixed;bottom:20px;right:20px;background:#fff;padding:15px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.1);text-align:center}.feedback-container p{margin:0;font-size:14px}.feedback-container button{margin:5px;padding:5px 10px;border:none;cursor:pointer;font-size:16px}.thumbs-up{background:green;color:#fff}.thumbs-down{background:red;color:#fff}</style><script defer="defer" src="/payee-calculator/static/js/main.ae5c13d1.js"></script><link href="/payee-calculator/static/css/main.47f54158.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><div id="feedback-popup" class="feedback-container"><p>Was this calculation helpful?</p><button class="thumbs-up" onclick='submitFeedback("up")'>👍 Yes</button> <button class="thumbs-down" onclick='submitFeedback("down")'>👎 No</button></div><script>function showFeedback() {
+            document.getElementById('feedback-popup').style.display = 'block';
+        }
+
+        function submitFeedback(choice) {
+            console.log('User feedback:', choice);
+            document.getElementById('feedback-popup').style.display = 'none';
+            // Here, you can send the feedback data to your backend or analytics service
+			
+			 // Send event to Google Analytics
+			gtag('event', 'feedback', {
+				'event_category': 'User Interaction',
+				'event_label': choice,
+				'value': 1
+			});
+			
+			// Store feedback count locally
+			let feedbackCount = JSON.parse(localStorage.getItem('feedbackData')) || { up: 0, down: 0 };
+			feedbackCount[choice]++;
+			localStorage.setItem('feedbackData', JSON.stringify(feedbackCount));
+
+			console.log('Updated feedback count:', feedbackCount);
+			
+			
+			// Send feedback to Google Sheets
+			fetch('https://script.google.com/macros/s/AKfycbwhPZW0dFEAjWBAvIcBq7-uwKAE43YxD1jNAikl-yB2ZoU0cCr0yvIVlg_ON8ICOBKN/exec', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ feedback: choice })
+			})
+			.then(response => response.json())
+			.then(data => console.log('Feedback saved:', data))
+			.catch(error => console.error('Error saving feedback:', error));
+}
+        }
+
+        // Show the feedback pop-up after results are displayed
+        setTimeout(showFeedback, 5000);</script></body></html>
