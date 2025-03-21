@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/payee-calculator/static/css/main.47f54158.css",
-    "main.js": "/payee-calculator/static/js/main.337492ec.js",
+    "main.js": "/payee-calculator/static/js/main.f8a81055.js",
     "index.html": "/payee-calculator/index.html",
     "main.47f54158.css.map": "/payee-calculator/static/css/main.47f54158.css.map",
-    "main.337492ec.js.map": "/payee-calculator/static/js/main.337492ec.js.map"
+    "main.f8a81055.js.map": "/payee-calculator/static/js/main.f8a81055.js.map"
   },
   "entrypoints": [
     "static/css/main.47f54158.css",
-    "static/js/main.337492ec.js"
+    "static/js/main.f8a81055.js"
   ]
 }
